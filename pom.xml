@@ -15,6 +15,30 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <profiles>
+        <profile>
+            <id>Windows</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <script.extension>.bat</script.extension>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <script.extension>.sh</script.extension>
+            </properties>
+        </profile>
+    </profiles>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -164,6 +188,9 @@
             <plugin>
                 <artifactId>exec-maven-plugin</artifactId>
                 <groupId>org.codehaus.mojo</groupId>
+                <configuration>
+                    <executable>${basedir}/scripts/npmstart${script.extension}</executable>
+                </configuration>
                 <executions>
                     <execution><!-- Run our  script -->
                         <id>npm start script</id>
@@ -171,9 +198,7 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                        <configuration>
-                            <executable>${basedir}/scripts/npmstart.sh</executable>
-                        </configuration>
+
                     </execution>
                 </executions>
             </plugin>
