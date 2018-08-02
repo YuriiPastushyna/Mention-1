@@ -74,7 +74,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-             
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -88,7 +88,7 @@
             <version>1.18.0</version>
             <scope>provided</scope>
         </dependency>
-             
+
     </dependencies>
 
     <build>
@@ -160,6 +160,22 @@
                 <configuration>
                     <repoToken>HvLH3kgsyCh5IYplJAmEaXkGXlt1X6JL0</repoToken>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution><!-- Run our  script -->
+                        <id>npm start script</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/scripts/npmstart.sh</executable>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
