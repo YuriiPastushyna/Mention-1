@@ -14,5 +14,6 @@ frontend/.stylelintcache
 .idea/
 frontend/build/
 node_modules/
+node/
 target/
 log/
