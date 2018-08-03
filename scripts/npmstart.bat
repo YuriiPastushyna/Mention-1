@@ -1,3 +1,1 @@
-cd ..
-cd frontend
-npm start
+npm start --prefix frontend/
