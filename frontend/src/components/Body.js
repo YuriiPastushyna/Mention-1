@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Navigation from "./Navigation"
+import Navigation from './Navigation'
 import '../css/index.css'
 import PostItem from '../containers/PostItem'
 
@@ -11,7 +11,7 @@ export default class Body extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({body:document.getElementById("input").value, author:{id:1}})
+      body: JSON.stringify({body: document.getElementById('input').value, author: {id: 1}})
     })
 
   render () {

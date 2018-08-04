@@ -6,9 +6,9 @@ import comment from '../img/comment-icon.png'
 
 const PostItem = props =>
   <Fragment>
-    {/*<img src={this.props.avatar}/>
+    {/* <img src={this.props.avatar}/>
     <h2>{this.props.username}</h2>
-    <p>{this.props.body}</p>*/}
+    <p>{this.props.body}</p> */}
     <div className="post">
       <div className="post__header d-flex content-between items-center">
         <div className="profile d-flex">

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Navigation from "./Navigation";
+import Navigation from './Navigation'
 export default class Messages extends React.Component {
   render () {
     return (
