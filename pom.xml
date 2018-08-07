@@ -2,229 +2,44 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-<groupId>org.danit</groupId>
-<artifactId>mention</artifactId>
-<packaging>pom</packaging>
-<version>1.0-SNAPSHOT</version>
-<modules>
-    <module>mentionserver</module>
-</modules>
+    <groupId>org.danit</groupId>
+    <artifactId>mention</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-<properties>
-    <java.version>1.8</java.version>
-</properties>
-
-
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.3.RELEASE</version>
-</parent>
-
-<dependencies>
-    <dependency>
+    <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/junit/junit -->
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-        <scope>test</scope>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-    <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-all</artifactId>
-        <version>1.10.19</version>
-        <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.3.RELEASE</version>
-    </dependency>
+    </parent>
 
-    <dependency>
-        <groupId>org.modelmapper</groupId>
-        <artifactId>modelmapper</artifactId>
-        <version>2.1.0</version>
-    </dependency>
+    <modules>
+        <module>mentionserver</module>
+        <module>frontend</module>
+    </modules>
 
-    <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <scope>runtime</scope>
-    </dependency>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <scope>runtime</scope>
-    </dependency>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <executions>
+                        <execution>
 
-    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>1.7.25</version>
-    </dependency>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.25</version>
-        <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.18.0</version>
-        <scope>provided</scope>
-    </dependency>
-
-</dependencies>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <configuration>
-                <mainClass>com.mention.SpringBootConfiguration</mainClass>
-            </configuration>
-        </plugin>
-        <plugin>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>integration-test</goal>
-                        <goal>verify</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>2.17</version>
-            <executions>
-                <execution>
-                    <id>validate</id>
-                    <phase>validate</phase>
-                    <configuration>
-                        <configLocation>./checkstyle_config.xml</configLocation>
-                        <encoding>utf-8</encoding>
-                        <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
-                        <violationSeverity>warning</violationSeverity>
-                    </configuration>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.6.201602180812</version>
-            <executions>
-                <execution>
-                    <id>prepare-agent</id>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
-        <plugin>
-            <groupId>org.eluder.coveralls</groupId>
-            <artifactId>coveralls-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <configuration>
-                <repoToken>HvLH3kgsyCh5IYplJAmEaXkGXlt1X6JL0</repoToken>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>com.github.eirslett</groupId>
-            <artifactId>frontend-maven-plugin</artifactId>
-            <!-- Use the latest released version:
-            https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-            <version>1.6</version>
-            <configuration>
-                <workingDirectory>frontend</workingDirectory>
-                <installDirectory>frontend</installDirectory>
-            </configuration>
-            <executions>
-                <execution>
-                    <!--Needed To run Grunt Tasks-->
-                    <id>install node and npm</id>
-                    <goals>
-                        <goal>install-node-and-npm</goal>
-                    </goals>
-                    <configuration>
-                        <nodeVersion>v8.11.1</nodeVersion>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>npm install</id>
-                    <goals>
-                        <goal>npm</goal>
-                    </goals>
-
-                    <!-- optional: default phase is "generate-resources" -->
-                    <phase>generate-resources</phase>
-
-                    <configuration>
-                        <!-- optional: The default argument is actually
-                        "install", so unless you need to run some other npm command,
-                        you can remove this whole <configuration> section.
-                        -->
-                        <arguments>install</arguments>
-                    </configuration>
-                </execution>
-
-            </executions>
-        </plugin>
-        <plugin>
-            <artifactId>exec-maven-plugin</artifactId>
-            <groupId>org.codehaus.mojo</groupId>
-            <configuration>
-                <executable>${basedir}/scripts/npmstart${script.extension}</executable>
-            </configuration>
-            <executions>
-                <execution><!-- Run our  script -->
-                    <id>npm start script</id>
-                    <phase>generate-sources</phase>
-                    <goals>
-                        <goal>exec</goal>
-                    </goals>
-
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
     <profiles>
         <profile>
             <id>Windows</id>
@@ -248,6 +63,16 @@
                 <script.extension>.sh</script.extension>
             </properties>
         </profile>
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <script.extension>.sh</script.extension>
+            </properties>
+        </profile>
     </profiles>
-
 </project>
