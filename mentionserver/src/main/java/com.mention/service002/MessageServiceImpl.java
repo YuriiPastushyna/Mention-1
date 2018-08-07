@@ -24,19 +24,16 @@ public class MessageServiceImpl implements MessageService {
   }
 
   @Override
-  @Transactional
   public void addMessage(Message message) {
     messageRepository.save(message);
   }
 
   @Override
-  @Transactional
   public void deleteMessage(Long id) {
     messageRepository.deleteById(id);
   }
 
   @Override
-  @Transactional
   public void updateMessage(Message message) {
     messageRepository.save(message);
   }
