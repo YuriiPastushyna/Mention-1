@@ -14,8 +14,6 @@ script:
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
-  - mvn clean test jacoco:report-aggregate coveralls:report
-  - mvn clean test jacoco:report-aggregate 
 
 # When any tests are present update script with:
 #- mvn clean test jacoco:report coveralls:report
